@@ -6,7 +6,7 @@
 #    By: zweng <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 18:11:43 by zweng             #+#    #+#              #
-#    Updated: 2018/01/20 21:24:01 by zweng            ###   ########.fr        #
+#    Updated: 2018/01/22 14:09:45 by zweng            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ LIBDIR = libft
 
 LIB = libft.a
 
-SRCS = lem_in.c helper.c li_get_input.c li_get_input_util2.c li_get_input_util.c 
+SRCS = lem_in.c helper.c li_get_input.c li_get_input_util2.c li_get_input_util.c \
+	   li_check.c
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 
@@ -42,14 +43,14 @@ all: $(NAME)
 
 $(NAME): $(LIBDIR)/$(LIB) $(OBJS)
 	@$(CC) $(OBJS) -L$(LIBDIR)/ -lft -o $@
-	@printf $(GREEN)"\nFinish linking\n"$(EOC)
+	@printf $(GREEN)"\nFinish lem-in linking\n"$(EOC)
 
 $(LIBDIR)/$(LIB):
 	@make -C $(LIBDIR)/ fclean && make -C $(LIBDIR)/
 
 %.o: %.c $(HEADER)
 	@$(CC) -c $(CFLAGS) $< -I. -I$(HEADER_DIR) -o $@
-	@printf $(GREEN)"\r\E[KFinish compiling"$(EOC)
+	@printf $(GREEN)"\r\E[KFinish lem-in compiling"$(EOC)
 
 clean:
 	@/bin/rm -f $(OBJS) 

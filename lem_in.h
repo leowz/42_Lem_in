@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 16:24:27 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/20 22:26:40 by zweng            ###   ########.fr       */
+/*   Updated: 2018/01/22 14:07:54 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ t_room			*li_convert_room(char *line);
 t_list			*li_newrm(t_room *room);
 int				li_ckroom(char *line, int *flag);
 int				li_cklink(char *line);
+int				li_check_lstrooms(t_list *lst);
 # include "helper.h"
 #endif

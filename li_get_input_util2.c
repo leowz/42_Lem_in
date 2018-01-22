@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 17:33:52 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/20 22:26:46 by zweng            ###   ########.fr       */
+/*   Updated: 2018/01/22 12:26:23 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ static int	pf_init_rm_names(t_data *data)
 			node = node->next;
 			i++;
 		}
+	ft_putstr("init rm names succes\n");
 		return (1);
 	}
+	ft_putstr("init rm names fails\n");
 	return (0);
 }
 
@@ -41,6 +43,7 @@ static void	pf_init_map(int **map, int size)
 	int		j;
 
 	i = 0;
+	ft_putstr("enter init map\n");
 	while (i < size)
 	{
 		j = 0;

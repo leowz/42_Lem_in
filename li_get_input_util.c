@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 12:51:49 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/20 22:26:39 by zweng            ###   ########.fr       */
+/*   Updated: 2018/01/22 12:29:51 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ t_list		*li_newrm(t_room *room)
 
 int			li_get_iscomment(char **line)
 {
-	printf("comment det\n");
 	if (**line == '#' && (ft_strcmp(*line, "##start") != 0) &&
 				(ft_strcmp(*line, "##end") != 0))
 	{
 		ft_strdel(line);
+		ft_putstr("comment det\n");
 		return (1);
 	}
 	return (0);
@@ -63,30 +63,31 @@ int			li_ckroom(char *line, int *flag)
 
 	if (*line == '#' && ft_strstr(line, "##start") && !(*flag & F_RM_START))
 	{
-		printf("check start det\n");
+		//printf("check start det\n");
 		*flag += F_RM_START;
 		return (1);
 	}
 	if (*line == '#' && ft_strstr(line, "##end") && !(*flag & F_RM_END))
 	{
-		printf("check end det\n");
+	//	printf("check end det\n");
 		*flag += F_RM_END;
 		return (1);
 	}
 	if ((ptr1 = ft_strchr(line, ' ')) && (ptr2 = ft_strrchr(line, ' ')))
 	{
-		printf("check normal det\n");
+	//	printf("check normal det\n");
 		if (ptr2 - ptr1 > 0 && (ptr1 - line > 0) && *(ptr2 + 1) != 0)
 		{
-		printf("check success\n");
+	//	printf("check success\n");
 			return (1);
 		}
 		else
 		{
-		printf("check fails\n");
+		printf("check room fails\n");
 			return (0);
 		}
 	}
+		printf("check room fails\n");
 	return (0);
 }
 
@@ -98,9 +99,16 @@ int			li_cklink(char *line)
 	{
 		//TODO: when room name contains '-' detect correctly according to all names
 		if ((ptr = ft_strchr(line, '-')) && ptr - line > 0 && *(ptr + 1) != 0)
+		{
+		printf("check link success\n");
 			return (1);
+		}
 		else
+		{
+		printf("check link fails\n");
 			return (0);
+		}
 	}
+		printf("check link out fails\n");
 	return (0);
 }

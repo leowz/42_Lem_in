@@ -1,0 +1,124 @@
+comment det
+comment det
+comment det
+comment det
+comment det
+enter init linkmap
+enter init rm names
+init rm names succes
+enter init map
+getmap linkmap initalized
+get ants success
+get normal rooms
+get normal rooms
+get normal rooms
+get normal rooms
+get normal rooms
+get normal rooms
+get normal rooms
+get normal rooms
+get normal rooms
+get normal rooms
+get normal rooms
+get normal rooms
+get normal rooms
+get normal rooms
+get start rooms
+get normal rooms
+get normal rooms
+get normal rooms
+get end rooms
+get normal rooms
+get normal rooms
+get normal rooms
+check room fails
+check link success
+append lastroom
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+check link success
+#-----------------print size-------------#
+ant size is 100, lm_siz is 22
+#-----------------print size-------------#
+#-----------------names-------------#
+12     start  end    0      1      2      3      4      5      6      7      8      9      10     11     13     14     15     17     18     19     16     
+#----------------names--------------#
+#-----------------link map 22 * 22 -------------#
+0      0      0      1      1      1      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      
+0      0      0      0      0      1      0      0      0      0      0      1      0      0      0      0      0      0      0      1      0      0      
+0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      
+1      0      0      0      0      0      0      0      1      1      0      1      0      0      0      0      1      0      0      0      0      0      
+1      0      0      0      0      1      0      0      1      0      0      0      0      1      0      1      1      0      0      0      1      1      
+1      1      0      0      1      0      0      0      0      0      0      0      1      1      0      0      0      0      0      1      0      0      
+0      0      0      0      0      0      0      1      1      0      0      0      0      1      0      1      0      0      0      0      0      0      
+0      0      0      0      0      0      1      0      0      0      0      0      0      1      1      0      0      1      0      0      0      0      
+0      0      0      1      1      0      1      0      0      1      0      0      0      0      1      0      0      1      0      1      0      0      
+0      0      0      1      0      0      0      0      1      0      0      1      0      0      1      0      1      0      0      0      0      0      
+0      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      
+0      1      0      1      0      0      0      0      0      1      1      0      1      0      0      0      0      0      0      0      0      1      
+0      0      0      0      0      1      0      0      0      0      0      1      0      0      1      0      1      0      0      1      0      0      
+0      0      0      0      1      1      1      1      0      0      0      0      0      0      0      1      1      1      1      0      0      0      
+0      0      0      0      0      0      0      1      1      1      0      0      1      0      0      0      0      1      1      1      1      0      
+0      0      0      0      1      0      1      0      0      0      0      0      0      1      0      0      0      0      0      0      0      0      
+1      0      1      1      1      0      0      0      0      1      0      0      1      1      0      0      0      0      1      1      0      0      
+0      0      0      0      0      0      0      1      1      0      0      0      0      1      1      0      0      0      1      0      0      0      
+0      0      0      0      0      0      0      0      0      0      0      0      0      1      1      0      1      1      0      0      0      0      
+0      1      0      0      0      1      0      0      1      0      0      0      1      0      1      0      1      0      0      0      1      0      
+0      0      0      0      1      0      0      0      0      0      0      0      0      0      1      0      0      0      0      1      0      0      
+0      0      0      0      1      0      0      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      
+#-----------------link map 22 * 22 -------------#

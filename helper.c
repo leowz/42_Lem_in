@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 20:03:27 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/20 22:26:43 by zweng            ###   ########.fr       */
+/*   Updated: 2018/01/22 12:37:20 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ void	print_map(t_data *data)
 	int i;
 	i = 0;
 	
-	printf("#-----------------link map-------------#\n");
+	printf("#-----------------link map %d * %d -------------#\n", data->lm_size, data->lm_size);
 	while (i < data->lm_size)
 	{
 		int j = 0;
 		while (j < data->lm_size)
 		{
-			printf("%5d", data->link_map[i][j]);
+			printf("%-5d  ", data->link_map[i][j]);
 			j++;
 		}
 		printf("\n");
 		i++;
 	}
-	printf("#-----------------link map-------------#\n");
+	printf("#-----------------link map %d * %d -------------#\n", data->lm_size, data->lm_size);
 }
 
 void	print_names(t_data *data)
@@ -46,7 +46,7 @@ void	print_names(t_data *data)
 		int j = 0;
 		while (j < data->lm_size)
 		{
-			printf("%s  ", data->rm_names[j]);
+			printf("%-5s  ", data->rm_names[j]);
 			j++;
 		}
 		printf("\n");
