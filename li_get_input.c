@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 20:03:52 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/22 14:32:47 by zweng            ###   ########.fr       */
+/*   Updated: 2018/01/22 16:40:50 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,11 @@ static int	pf_get_links(t_data *data, char **line, int *flag, t_room *lrm)
 		printf("get link get pos fails\n");
 		return (0);
 	}
-	/*if (data->link_map[x][y] || data->link_map[y][x])
+	if (data->link_map[x][y] != 1 || data->link_map[y][x] != 1)
 	{
-		print_map(data);
-		printf("get link x,y already exist fails\n");
-		return (0);
-	}*/
-	data->link_map[x][y] = 1;
-	data->link_map[y][x] = 1;
+		data->link_map[x][y] = 1;
+		data->link_map[y][x] = 1;
+	}
 	ft_strdel(line);
 	return (1);
 }
