@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper.h                                           :+:      :+:    :+:   */
+/*   li_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/20 20:13:27 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/24 15:54:32 by zweng            ###   ########.fr       */
+/*   Created: 2018/01/22 17:13:10 by zweng             #+#    #+#             */
+/*   Updated: 2018/01/22 17:13:53 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HP
-# define HP
-void	print_data(t_data *data);
-void	print_names(t_data *data);
-void	print_map(t_data *data);
-void	print_size(t_data *data);
-void	print_list(t_data *data);
-void	print_tab(t_data *data);
-#endif
+#include "lem_in.h"
+
+void	li_putline(char *str)
+{
+	ft_putstr(str);
+	ft_putstr("\n");
+}

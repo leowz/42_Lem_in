@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 20:03:27 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/22 12:37:20 by zweng            ###   ########.fr       */
+/*   Updated: 2018/01/24 16:59:32 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,46 @@ void	print_map(t_data *data)
 		i++;
 	}
 	printf("#-----------------link map %d * %d -------------#\n", data->lm_size, data->lm_size);
+}
+
+void	print_tab(t_data *data)
+{	
+	int i;
+	i = 0;
+	
+	printf("#-----------------tab%d * %d -------------#\n", data->lm_size, data->lm_size);
+		int j = 0;
+		printf("%-3c| ", ' ');
+		while (j < data->lm_size)
+		{
+			printf("%-3.3s ", data->rm_names[j]);
+			j++;
+		}
+		printf("\n");
+		printf("%-3c| ", ' ');
+		j = 0;
+		while (j < data->lm_size)
+		{
+			printf("%-3d ", j);
+			j++;
+		}
+		printf("\n");
+	printf("#-----------------tab-------------#\n");
+		printf("%-3d| ", 0);
+	while (i < data->lm_size)
+	{
+		j = 0;
+		while (j < data->lm_size)
+		{
+			printf("%-3d ", data->link_map[i][j]);
+			j++;
+		}
+		printf("\n");
+		if (i != data->lm_size -1)
+			printf("%-3d| ", i + 1);
+		i++;
+	}
+	printf("#-----------------tab%d * %d -------------#\n", data->lm_size, data->lm_size);
 }
 
 void	print_names(t_data *data)

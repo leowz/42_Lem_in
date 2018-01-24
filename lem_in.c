@@ -6,13 +6,37 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 16:23:41 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/20 22:26:45 by zweng            ###   ########.fr       */
+/*   Updated: 2018/01/24 18:28:57 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include "helper.h"
+/*
+void	pf_data_del(t_data *dt)
+{
 
+}
+
+void	pf_path_del(t_path *pt, int size)
+{
+	int 	i;
+
+	if (pt)
+	{
+		i = 0;
+		while (i < size)
+		{
+			free((pt + i)->path);
+			(pt + i)->length = 0;
+			free(pt + i);
+			i++;
+		}
+		free(pt);
+		pt = NULL;
+	}
+	size = 0;
+}
+*/
 void	pf_init_data(t_data *dt)
 {
 	dt->ant_nbr = 0;
@@ -25,14 +49,27 @@ void	pf_init_data(t_data *dt)
 int		main(void)
 {
 	t_data	data;
+	t_path	**paths;
+	int		path_nbr;
 
+	paths = NULL;
 	pf_init_data(&data);
 	if (!li_get_input(&data))
-	{//!li_check_input(&data)
+	{
 		ft_putstr_fd("ERROR\n", STDERR_FILENO);
 		return (1);
 	}
-	print_data(&data);
+	//print_tab(&data);
+	ft_putstr("\n");
+	if ((path_nbr = li_resolve(data.link_map, data.lm_size, paths)))
+	{
+	//print paths;
+	}
+	//else
+	//	ft_putstr_fd("ERROR\n", STDERR_FILENO);
+	//print_tab(&data);
+	//pf_data_del(&data);
+	//pf_path_del(paths, path_nbr);
 	//li_find_path(data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 16:24:27 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/22 16:12:17 by zweng            ###   ########.fr       */
+/*   Updated: 2018/01/23 19:20:26 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 # define F_LK_ALC	32
 # define F_RM_STAD	64
 # define F_RM_EDAD	128
+
+typedef	struct	s_path
+{
+	int			*path;
+	int			length;
+}				t_path;
 
 typedef struct	s_room
 {
@@ -51,5 +57,7 @@ int				li_cklink(char *line);
 int				li_check_lstrooms(t_list *lst);
 int				li_strccount(char *str, char c);
 int				li_coord_isdigit(char *str);
+void			li_putline(char *str);
+int				li_resolve(int **map, int size, t_path **paths);
 # include "helper.h"
 #endif

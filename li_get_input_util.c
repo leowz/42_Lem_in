@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 12:51:49 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/22 16:14:48 by zweng            ###   ########.fr       */
+/*   Updated: 2018/01/22 20:55:31 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,11 @@ int			li_ckroom(char *line, int *flag)
 		}
 		else
 		{
-		printf("check room fails\n");
+		//printf("check room fails\n");
 			return (0);
 		}
 	}
-		printf("check room fails\n");
+		//printf("check room fails\n");
 	return (0);
 }
 
@@ -102,15 +102,15 @@ int			li_cklink(char *line)
 		//TODO: when room name contains '-' detect correctly according to all names
 		if ((ptr = ft_strchr(line, '-')) && ptr - line > 0 && *(ptr + 1) != 0)
 		{
-		printf("check link success\n");
+		//printf("check link success\n");
 			return (1);
 		}
 		else
 		{
-		printf("check link fails\n");
+		//printf("check link fails\n");
 			return (0);
 		}
 	}
-		printf("check link out fails\n");
+		//printf("check link out fails\n");
 	return (0);
 }

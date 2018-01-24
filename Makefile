@@ -6,7 +6,7 @@
 #    By: zweng <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 18:11:43 by zweng             #+#    #+#              #
-#    Updated: 2018/01/22 16:00:19 by zweng            ###   ########.fr        #
+#    Updated: 2018/01/22 18:17:30 by zweng            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIBDIR = libft
 LIB = libft.a
 
 SRCS = lem_in.c helper.c li_get_input.c li_get_input_util2.c li_get_input_util.c \
-	   li_check.c li_util.c
+	   li_check.c li_util.c li_print.c li_resolve.c
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 
