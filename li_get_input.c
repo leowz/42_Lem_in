@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 20:03:52 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/23 19:20:27 by zweng            ###   ########.fr       */
+/*   Updated: 2018/01/26 16:42:16 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static int	pf_get_links(t_data *data, char **line, int *flag, t_room *lrm)
 	int		x;
 	int		y;
 
+//	printf("get links\n");
 	x = 0;
 	y = 0;
 	if (!(*flag & F_LK) && !pf_append_lastroom(data, lrm, flag))
@@ -54,7 +55,7 @@ static int	pf_get_links(t_data *data, char **line, int *flag, t_room *lrm)
 //		printf("get link get pos fails\n");
 		return (0);
 	}
-	if (data->link_map[x][y] == 0 || data->link_map[y][x] == 0)
+	if (data->link_map[x][y] == 0)
 	{
 		data->link_map[x][y] = data->lm_size + 1;
 		data->link_map[y][x] = data->lm_size + 1;
@@ -68,6 +69,7 @@ static int	pf_get_rooms(t_data *data, char **line, int *flag, t_room **lsrm)
 	t_room	*room;
 	t_list	*node;
 
+//	printf("get rooms\n");
 	if ((ft_strstr(*line, "##start") || ft_strstr(*line, "##end")))
 		;
 	else if ((*flag & F_RM_START) && !(*flag & F_RM_STAD) &&
@@ -102,6 +104,7 @@ static int	pf_get_rooms(t_data *data, char **line, int *flag, t_room **lsrm)
 
 static int	pf_get_ants(t_data *data, char **line, int *flag)
 {
+//	printf("get ans\n");
 	if (ft_atoi(*line) > 0 && !ft_strchr(*line, '-'))
 	{
 		data->ant_nbr = ft_atoi(*line);
@@ -122,9 +125,11 @@ int			li_get_input(t_data	*data)
 
 	flag = 0;
 	lastroom = NULL;
-	while (get_next_line(STDIN_FILENO, &line))
+	while (get_next_line(STDIN_FILENO, &line) > 0)
 	{
+#ifdef	PTL
 		li_putline(line);
+#endif
 		if (li_get_iscomment(&line))
 			continue ;
 		else if ((flag == 0) && pf_get_ants(data, &line, &flag))

@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 12:51:49 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/22 20:55:31 by zweng            ###   ########.fr       */
+/*   Updated: 2018/01/25 19:16:55 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ t_list		*li_newrm(t_room *room)
 
 int			li_get_iscomment(char **line)
 {
-	if (**line == '#' && (ft_strcmp(*line, "##start") != 0) &&
+//	printf("enter is comment\n");
+	if (**line && (**line == '#') && (ft_strcmp(*line, "##start") != 0) &&
 				(ft_strcmp(*line, "##end") != 0))
 	{
 		ft_strdel(line);
-		ft_putstr("comment det\n");
+//		ft_putstr("comment det\n");
 		return (1);
 	}
 	return (0);

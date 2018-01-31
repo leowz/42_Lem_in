@@ -6,12 +6,30 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 20:03:27 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/24 16:59:32 by zweng            ###   ########.fr       */
+/*   Updated: 2018/01/26 17:11:41 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include <stdio.h>
+
+void	print_ants(t_ant *ant, int size)
+{
+	int		i = 0;
+
+	while (i < size)
+	{
+		print_ant(ant + i);
+		printf(" => ");
+		i++;
+	}
+	printf("\n");
+}
+
+void	print_ant(t_ant *ant)
+{
+	printf("ant(n_p: %d, n_r: %d)", ant->n_path, ant->n_room);
+}
 
 void	print_size(t_data *data)
 {
@@ -19,6 +37,41 @@ void	print_size(t_data *data)
 	printf("ant size is %d, lm_siz is %d\n", data->ant_nbr, data->lm_size);
 	printf("#-----------------print size-------------#\n");
 }
+
+void	print_paths(t_path **pths, t_data *data)
+{
+	int		i = 0;
+	while (pths && *pths)
+	{
+		i = 0;
+		printf("len %d|start => ", (*pths)->length + 2);
+		while ((*pths)->path[i] != -1 && i < (*pths)->length)
+		{
+			char *nm = data->rm_names[(*pths)->path[i]];
+			printf("%s(i: %d) => ", nm, (*pths)->path[i]);
+			i++;
+		}
+		printf("(null)\n");
+		pths++;
+	}
+}
+
+void	print_path(t_path *pth)
+{
+	int		i = 0;
+	if (pth)
+	{
+		i = 0;
+		printf("len %d|start => ", pth->length + 2);
+		while (pth->path[i] != -1 && i < pth->length)
+		{
+			printf("%d => ", pth->path[i]);
+			i++;
+		}
+		printf("last\n");
+	}
+}
+
 
 void	print_map(t_data *data)
 {	

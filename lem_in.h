@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 16:24:27 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/23 19:20:26 by zweng            ###   ########.fr       */
+/*   Updated: 2018/01/30 20:21:19 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@
 # define F_LK_ALC	32
 # define F_RM_STAD	64
 # define F_RM_EDAD	128
+
+# define PTL
+
+typedef	struct	s_ant
+{
+	int			n_path;
+	int			n_room;
+}				t_ant;
 
 typedef	struct	s_path
 {
@@ -58,6 +66,9 @@ int				li_check_lstrooms(t_list *lst);
 int				li_strccount(char *str, char c);
 int				li_coord_isdigit(char *str);
 void			li_putline(char *str);
-int				li_resolve(int **map, int size, t_path **paths);
+int				li_resolve(t_data *data, t_path ***paths);
+void			li_print_res(t_data *data, t_path **paths);
+int				li_search_path(t_data *data, int row,
+				int *arr, t_path **ppath);
 # include "helper.h"
 #endif
