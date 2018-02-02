@@ -1,45 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   li_util.c                                          :+:      :+:    :+:   */
+/*   li_resolve_util.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/22 15:57:14 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/31 22:48:47 by zweng            ###   ########.fr       */
+/*   Created: 2018/01/31 19:25:55 by zweng             #+#    #+#             */
+/*   Updated: 2018/01/31 22:48:54 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "li_resolve.h"
 
-int		li_strccount(char *str, char c)
+int		pf_contains(int *row, int n, int size)
 {
-	int		ret;
+	int 	i = 0;
 
-	ret = 0;
-	while (str && *str)
+	while (*(row + i) != -1 && i < size)
 	{
-		if (*str++ == c)
-			ret++;
-	}
-	return (ret);
-}
-
-int		li_coord_isdigit(char *str)
-{
-	if (str && *str == ' ')
-	{
-		str++;
-		while (*str && *str != ' ' && ft_isdigit(*str))
-			str++;
-		if (*str == 0 || *str == ' ')
+		if (*(row + i) == n)
 			return (1);
+		i++;
 	}
 	return (0);
 }
 
-void	li_putline(char *str)
+void	pf_initpath(int *path, int size)
 {
-	ft_putstr(str);
-	ft_putstr("\n");
+	int i = 0;
+	while (i < size)
+		*(path + i++) = -1;
+}
+
+void	pf_init_va(t_var *va, int size)
+{
+	va->i = 0;
+	va->i_min = size + 1;
+	va->tmp = size + 1;
+	va->pmin = size + 1;
 }

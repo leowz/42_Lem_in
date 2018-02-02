@@ -6,85 +6,94 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 17:13:10 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/26 16:16:55 by zweng            ###   ########.fr       */
+/*   Updated: 2018/02/01 17:07:32 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	li_putline(char *str)
+static t_ant	*pf_new_ants(t_data *data)
 {
-	ft_putstr(str);
-	ft_putstr("\n");
-}
-void	pf_init_ants(t_ant *ants, int size)
-{
-	int 	i = 0;
-	while (i < size)
+	int 	i;
+	t_ant	*ants;
+
+	if (!(ants = malloc(sizeof(t_ant) * data->ant_nbr)))
+			return (NULL);
+	i = 0;
+	while (i < data->ant_nbr)
 	{
 		ants[i].n_room = -1;
 		ants[i].n_path = -1;
 		i++;
 	}
+	return (ants);
 }
 
+static void	pf_distribute_ants(t_ant *ants, int *i, int *j, int *flag)
+{			
+	ants[*i].n_room = 0;
+	ants[*i].n_path = *j;
+	(*i)++;
+	(*j)++;
+	if (!(*flag & 2))
+		*flag += 2;
+}
+
+static void pf_print_one(t_data *data, int i, int *flag, int p_n)
+{
+	if (!(*flag & 1))
+		*flag += 1;
+	if ((*flag & 4))
+		ft_putstr(" ");
+	else
+		*flag += 4;
+	ft_putstr("L");
+	ft_putnbr(i + 1);
+	ft_putstr("-");
+	ft_putstr(data->rm_names[p_n]);
+	if (!(*flag & 2))
+		*flag += 2;
+}
+
+static void pf_increase(int *flag, int i, t_ant *ants)
+{
+	flag = 0;
+	ants[i].n_room++;
+}
+
+int		li_pt_flag(int flag)
+{
+	if ((flag & 1))
+		ft_putstr("\n");
+	if (!(flag & 2))
+		return (0);
+	return (1);
+}
 void	li_print_res(t_data *data, t_path **paths)
 {
-	int		i = 0;
-	int		j = 0;
-	int		brk = 1;
+	int		i;
+	int		j;
 	int		flag;
-
-	t_ant	*ants = malloc(sizeof(t_ant) * data->ant_nbr);
-	pf_init_ants(ants, data->ant_nbr);
+	t_ant	*ants;
+	
+	if (!(ants = pf_new_ants(data)))
+		return ;
 	while (1)
 	{
 		i = 0;
-		brk = 1;
 		j = 0;
 		flag = 0;
-		//printf("print_res\n");
 		while (i < data->ant_nbr && ants[i].n_room != -1)
 		{
-		//	printf("before alloc path\n");
-		//	while (ants[i].n_room == -1 && paths[j] && i < data->lm_size)
-		//	{
-		//		ants[i].n_room = paths[j]->path[0];
-		//		ants[i].n_path = j;
-		//		i++;
-		//		j++;
-		//		brk = 0;
-		//	}
-			//print_ants(ants, data->lm_size);
-		//	printf("before print one\n");
 			if (ants[i].n_room != -1 && ants[i].n_room < paths[ants[i].n_path]->length)
-			{
-				int p_n = paths[ants[i].n_path]->path[ants[i].n_room];
-				flag = 1;
-				printf("L%d-%s ", i + 1, data->rm_names[p_n]);
-			}
-		//	printf("before update room\n");
+				pf_print_one(data, i, &flag, paths[ants[i].n_path]->path[ants[i].n_room]);
 			if (ants[i].n_room >= 0 && ants[i].n_room < data->lm_size)
-			{
-				brk = 0;
-				ants[i].n_room++;
-			}
+				pf_increase(&flag, i, ants);
 			i++;
 		}
-	//	print_ants(ants, data->lm_size);
-	//	printf("before alloc path i = %d\n",i);
-			while (ants[i].n_room == -1 && paths[j] && i < data->ant_nbr)
-			{
-			//	printf("update ant %d\n", i);
-				ants[i].n_room = 0;
-				ants[i].n_path = j;
-				i++;
-				j++;
-				brk = 0;
-			}
-			if (flag)
-				printf("\n");
-		if (brk)
-			break ;
+		while (ants[i].n_room == -1 && paths[j] && i < data->ant_nbr)
+			pf_distribute_ants(ants, &i, &j, &flag);
+		if (!li_pt_flag(flag))
+			return ;
 	}
 }

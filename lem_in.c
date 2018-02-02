@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 16:23:41 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/31 15:59:40 by zweng            ###   ########.fr       */
+/*   Updated: 2018/02/01 21:27:47 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		main(void)
 	pf_init_data(&data);
 	if (!li_get_input(&data))
 	{
-		//ft_putstr_fd("ERROR\n", STDOUT_FILENO);
+		ft_putstr_fd("ERROR\n", STDOUT_FILENO);
 		return (1);
 	}
 //	print_tab(&data);
@@ -64,14 +64,12 @@ int		main(void)
 	if ((path_nbr = li_resolve(&data, &paths)))
 	{
 	//print paths;
-		printf("before print path\n");
 		print_paths(paths, &data);
-		printf("after print path\n");
 		li_print_res(&data, paths);
-		printf("after print res\n");
 	}
-	//else
-	//	ft_putstr_fd("ERROR\n", STDERR_FILENO);
+	else
+		ft_putstr_fd("ERROR\n", STDOUT_FILENO);
+//	printf("path_nbr is %d\n", path_nbr);
 	print_tab(&data);
 	//pf_data_del(&data);
 	//pf_path_del(paths, path_nbr);
