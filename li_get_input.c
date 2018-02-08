@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 20:03:52 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/26 16:42:16 by zweng            ###   ########.fr       */
+/*   Updated: 2018/02/08 22:16:47 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,11 @@ static int	pf_append_lastroom(t_data *data, t_room *room, int *flag)
 {
 	t_list	*node;
 
-//	printf("append lastroom\n");
 	if ((node = li_newrm(room)))
 	{
 		ft_lstappend(&(data->ls_rooms), node);
 		if (!li_check_lstrooms(data->ls_rooms))
-		{
-//			printf("room duplication\n");
 			return (0);
-		}
 		if (!(*flag & F_LK))
 			*flag += F_LK;
 		return (1);
@@ -37,24 +33,14 @@ static int	pf_get_links(t_data *data, char **line, int *flag, t_room *lrm)
 	int		x;
 	int		y;
 
-//	printf("get links\n");
 	x = 0;
 	y = 0;
 	if (!(*flag & F_LK) && !pf_append_lastroom(data, lrm, flag))
-	{
-//		printf("get link append last fails\n");
 		return (0);
-	}
 	if (!(*flag & F_LK_ALC) && !li_init_linkmap(data, flag))
-	{
-//		printf("get link init link fails\n");
 		return (0);
-	}
 	if (!li_lm_get_pos(data, *line, &x, &y))
-	{
-//		printf("get link get pos fails\n");
 		return (0);
-	}
 	if (data->link_map[x][y] == 0)
 	{
 		data->link_map[x][y] = data->lm_size + 1;
@@ -69,55 +55,52 @@ static int	pf_get_rooms(t_data *data, char **line, int *flag, t_room **lsrm)
 	t_room	*room;
 	t_list	*node;
 
-//	printf("get rooms\n");
 	if ((ft_strstr(*line, "##start") || ft_strstr(*line, "##end")))
 		;
-	else if ((*flag & F_RM_START) && !(*flag & F_RM_STAD) &&
-			!((*flag & F_RM_END) && !(*flag & F_RM_EDAD)) &&
-			(room = li_convert_room(*line)) && (node = li_newrm(room)))
+	else if ((*flag & F_RM_START) && !(*flag & F_RM_STAD) && !((*flag
+	& F_RM_END) && !(*flag & F_RM_EDAD)) && (room = li_convert_room(*line))
+		&& (node = li_newrm(room)))
 	{
-//		printf("get start rooms\n");
 		*flag += F_RM_STAD;
 		ft_lstadd(&(data->ls_rooms), node);
 	}
-	else if ((*flag & F_RM_END) && !(*flag & F_RM_EDAD) &&
-			!((*flag & F_RM_START) && !(*flag & F_RM_STAD)) &&
-			(room = li_convert_room(*line)))
+	else if ((*flag & F_RM_END) && !(*flag & F_RM_EDAD) && !((*flag
+	& F_RM_START) && !(*flag & F_RM_STAD)) && (room = li_convert_room(*line)))
 	{
-//		printf("get end rooms\n");
 		*flag += F_RM_EDAD;
 		*lsrm = room;
 	}
-	else if ((room = li_convert_room(*line)) && (node = li_newrm(room)))
-	{
-//		printf("get normal rooms\n");
+	else if ((room = li_convert_room(*line))
+			&& (node = li_newrm(room)))
 		ft_lstappend(&(data->ls_rooms), node);
-	}
 	else
-	{
-//		printf("room error\n");
 		return (0);
-	}
 	ft_strdel(line);
 	return (1);
 }
 
 static int	pf_get_ants(t_data *data, char **line, int *flag)
 {
-//	printf("get ans\n");
+	int		i;
+
 	if (ft_atoi(*line) > 0 && !ft_strchr(*line, '-'))
 	{
+		i = 0;
+		while ((*line)[i])
+		{
+			if (ft_isalpha((*line)[i]))
+				return (0);
+			i++;
+		}
 		data->ant_nbr = ft_atoi(*line);
 		ft_strdel(line);
 		*flag += F_RM;
-//		printf("get ants success\n");
 		return (1);
 	}
-//		printf("get ants fails\n");
 	return (0);
 }
 
-int			li_get_input(t_data	*data)
+int			li_get_input(t_data *data)
 {
 	char	*line;
 	int		flag;
@@ -127,9 +110,7 @@ int			li_get_input(t_data	*data)
 	lastroom = NULL;
 	while (get_next_line(STDIN_FILENO, &line) > 0)
 	{
-#ifdef	PTL
 		li_putline(line);
-#endif
 		if (li_get_iscomment(&line))
 			continue ;
 		else if ((flag == 0) && pf_get_ants(data, &line, &flag))

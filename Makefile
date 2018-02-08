@@ -6,7 +6,7 @@
 #    By: zweng <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 18:11:43 by zweng             #+#    #+#              #
-#    Updated: 2018/02/01 15:41:26 by zweng            ###   ########.fr        #
+#    Updated: 2018/02/08 22:36:34 by zweng            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,9 @@ LIBDIR = libft
 
 LIB = libft.a
 
-SRCS = lem_in.c helper.c li_get_input.c li_get_input_util2.c li_get_input_util.c \
-	   li_check.c li_util.c li_print.c li_resolve.c li_search_path.c li_resolve_util.c
+SRCS = lem_in.c li_get_input.c li_get_input_util2.c li_get_input_util.c \
+	   li_check.c li_util.c li_print.c li_print_util.c li_resolve.c li_search_path.c \
+	   li_resolve_util.c
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 
@@ -57,7 +58,7 @@ $(LIBDIR)/$(LIB):
 
 %.o: %.c $(HEADER)
 	@$(CC) -c $(CFLAGS) $< -I. -I$(HEADER_DIR) -o $@
-	@printf $(GREEN)"\r\E[KFinish lem-in compiling %s "$(EOC) $<
+	@printf $(GREEN)"\r\E[KFinish lem-in compiling %s\n"$(EOC) $<
 
 li_resolve.o: li_resolve.c li_resolve.h
 	@$(CC) -c $(CFLAGS) $< -I. -I$(HEADER_DIR) -o $@

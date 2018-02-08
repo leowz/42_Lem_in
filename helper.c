@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 20:03:27 by zweng             #+#    #+#             */
-/*   Updated: 2018/02/01 15:41:31 by zweng            ###   ########.fr       */
+/*   Updated: 2018/02/07 22:01:37 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	print_paths(t_path **pths, t_data *data)
 	while (pths && *pths)
 	{
 		i = 0;
-		printf("len %d|start => ", (*pths)->length + 2);
+		printf("len %d|start => ", (*pths)->length);
 		while ((*pths)->path[i] != -1 && i < (*pths)->length)
 		{
 			char *nm = data->rm_names[(*pths)->path[i]];
@@ -62,7 +62,7 @@ void	print_path(t_path *pth)
 	if (pth)
 	{
 		i = 0;
-		printf("len %d|start => ", pth->length + 2);
+		printf("len %d|start => ", pth->length);
 		while (pth->path[i] != -1 && i < pth->length)
 		{
 			printf("%d => ", pth->path[i]);

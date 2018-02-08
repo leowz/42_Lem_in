@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 16:24:27 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/31 22:48:49 by zweng            ###   ########.fr       */
+/*   Updated: 2018/02/08 22:35:49 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 # define F_RM_STAD	64
 # define F_RM_EDAD	128
 
-# define PTL
-
 typedef	struct	s_ant
 {
 	int			n_path;
@@ -42,7 +40,7 @@ typedef struct	s_room
 {
 	int			x;
 	int			y;
-	char		*name;	
+	char		*name;
 }				t_room;
 
 typedef struct	s_data
@@ -70,5 +68,9 @@ int				li_resolve(t_data *data, t_path ***paths);
 void			li_print_res(t_data *data, t_path **paths);
 int				li_search_path(t_data *data, int row,
 				int *arr, t_path **ppath);
-# include "helper.h"
+int				li_remain_ants(t_ant *ants, int i);
+int				li_pt_flag(int flag);
+int				li_have_pathone(t_path **paths);
+t_ant			*pf_new_ants(t_data *data);
+void			pf_increase(int *flag, int i, t_ant *ants);
 #endif
