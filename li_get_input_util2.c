@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 17:33:52 by zweng             #+#    #+#             */
-/*   Updated: 2018/02/08 22:18:58 by zweng            ###   ########.fr       */
+/*   Updated: 2018/02/09 20:21:24 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,13 @@ int				li_lm_get_pos(t_data *data, char *line, int *x, int *y)
 			ret = 0;
 	}
 	return (ret == 2 ? 1 : 0);
+}
+
+void			li_lstappend(t_list **alst, t_list *node)
+{
+	ft_lstappend(alst, node);
+	free(node->content);
+	node->content = NULL;
+	node->content_size = 0;
+	free(node);
 }

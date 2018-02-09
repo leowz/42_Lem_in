@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 16:53:01 by zweng             #+#    #+#             */
-/*   Updated: 2018/02/08 22:20:33 by zweng            ###   ########.fr       */
+/*   Updated: 2018/02/09 20:13:37 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	pf_nbr_path(t_path **ppath)
 	int		i;
 
 	i = 0;
-	while (ppath[i])
+	while (ppath && ppath[i])
 		i++;
 	return (i);
 }
@@ -83,7 +83,8 @@ int			li_resolve(t_data *data, t_path ***paths)
 	pf_dfs(data, 0, path);
 	pf_initpath(path, size);
 	li_search_path(data, 0, path, p);
-	ft_memdel((void **)&path);
+	free(path);
+	path = NULL;
 	li_path_sort(p);
 	*paths = p;
 	return (pf_nbr_path(p));

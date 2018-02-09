@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 16:24:27 by zweng             #+#    #+#             */
-/*   Updated: 2018/02/08 22:35:49 by zweng            ###   ########.fr       */
+/*   Updated: 2018/02/09 20:34:02 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LEM_IN_H
 
 # include "libft.h"
-# include <stdio.h>
 # define F_RM 		1
 # define F_LK 		2
 # define F_LASTRM 	4
@@ -52,7 +51,7 @@ typedef struct	s_data
 	int			lm_size;
 }				t_data;
 
-int				li_get_iscomment(char **line);
+int				li_get_iscomment(char *line);
 int				li_get_input(t_data	*data);
 int				li_init_linkmap(t_data *data, int *flag);
 int				li_lm_get_pos(t_data *data, char *line, int *x, int *y);
@@ -73,4 +72,7 @@ int				li_pt_flag(int flag);
 int				li_have_pathone(t_path **paths);
 t_ant			*pf_new_ants(t_data *data);
 void			pf_increase(int *flag, int i, t_ant *ants);
+void			li_lstappend(t_list **alst, t_list *node);
+int				li_input_juge(t_data *data, char *line, int *flag,
+				t_room **lastroom);
 #endif

@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 13:56:24 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/22 14:11:19 by zweng            ###   ########.fr       */
+/*   Updated: 2018/02/09 20:22:21 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int		li_check_lstrooms(t_list *lst)
 		while (head)
 		{
 			r2 = (t_room *)head->content;
-			if ((r1->x == r2->x && r1->y == r2->y) ||
-					!ft_strcmp(r1->name, r2->name))
+			if ((!r1 && !r2 && r1->x == r2->x && r1->y == r2->y) ||
+			(!(r1->name) && !(r2->name) && !ft_strcmp(r1->name, r2->name)))
 				return (0);
 			head = head->next;
 		}

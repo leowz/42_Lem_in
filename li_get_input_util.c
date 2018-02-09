@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 12:51:49 by zweng             #+#    #+#             */
-/*   Updated: 2018/02/08 22:14:32 by zweng            ###   ########.fr       */
+/*   Updated: 2018/02/09 20:11:08 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,11 @@ t_list		*li_newrm(t_room *room)
 	return (ret);
 }
 
-int			li_get_iscomment(char **line)
+int			li_get_iscomment(char *line)
 {
-	if (**line && (**line == '#') && (ft_strcmp(*line, "##start") != 0) &&
-				(ft_strcmp(*line, "##end") != 0))
-	{
-		ft_strdel(line);
+	if (*line && (*line == '#') && (ft_strcmp(line, "##start") != 0) &&
+				(ft_strcmp(line, "##end") != 0))
 		return (1);
-	}
 	return (0);
 }
 
