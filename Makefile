@@ -6,7 +6,7 @@
 #    By: zweng <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 18:11:43 by zweng             #+#    #+#              #
-#    Updated: 2018/02/09 20:22:32 by zweng            ###   ########.fr        #
+#    Updated: 2018/04/10 19:58:11 by zweng            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS = lem_in.c li_get_input.c li_get_input_util2.c li_get_input_util.c \
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 
-HEADER_DIR = libft
+HEADER_DIR = libft/includes
 
 HEADER = lem_in.h
 
